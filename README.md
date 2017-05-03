@@ -16,3 +16,9 @@ the stretch factor.
 
 6. Use the knowledge obtained to design new algorithms for constructing
 plane spanners for points that are not in convex position. 
+
+## License
+
+MIT, see [LICENSE](LICENSE.txt)
+
+[3rd party license](LICENSE_3RD_PARTY.txt)
