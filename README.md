@@ -19,6 +19,6 @@ plane spanners for points that are not in convex position.
 
 ## License
 
-MIT, see [LICENSE](LICENSE.txt)
+[MIT](LICENSE.txt)
 
 [3rd party license](LICENSE_3RD_PARTY.txt)
