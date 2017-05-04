@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import math
 
-G = nx.random_geometric_graph(10, 0.9)
+G = nx.random_geometric_graph(100, 0.2)
 pos = nx.get_node_attributes(G, 'pos')
 
 # print(pos)

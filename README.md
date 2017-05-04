@@ -1,7 +1,8 @@
 # Geometric Spanner Algorithms
 
+## Plan
 1. Implement an algorithm that determines the stretch factor of any
-given geometric spanner.
+given geometric graph.
 
 2. Implement the algorithm that constructs the spanner mentioned above.
 
@@ -16,6 +17,31 @@ the stretch factor.
 
 6. Use the knowledge obtained to design new algorithms for constructing
 plane spanners for points that are not in convex position. 
+
+## Definitions
+
+geometric graph: G(S, E), where S is a non-empty finite set of points
+in space, E is a set of edges that connect a pair of points, (p,q),
+such that the weight of the edge is equal to the distance between the
+points, |pq|
+
+minimum path length: the minimum path length of two vertices, p,q is
+denoted by |pq|_G, which is the shortest path from p to q
+
+spanner: a graph in which all vertices are connected; there is a path
+connecting any two vertices
+
+t-spanner: a graph such that for any two points, p,q, |pq|_G <= t *
+|pq|
+
+stretch factor: the minimum value of t for a t-spanner of the graph
+
+plane spanner: spanner whose edges do not cross
+
+convex position: a set of points is in convex position if all the
+points are on the convex hull formed from the points
+
+chain: a path, sequence of consecutive points connected by edges
 
 ## License
 

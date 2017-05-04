@@ -5,8 +5,13 @@ import math, random
 # what is a geometric graph?
 # set of points in euclidean space
 # I will use networkx Graph object
+
+def euclidean_distance(p, q):
+    """Euclidean distance of p,q tuples"""
+    return sum(((a-b)**2 for a,b in zip(p, q)))
+
 def random_weighted_geometric_graph(n, radius, dim=2, pos=None):
-    r"""Return the random geometric graph in the unit cube.
+    """Return the random geometric graph in the unit cube.
 
     The random geometric graph model places n nodes uniformly at random
     in the unit cube  Two nodes `u,v` are connected with an edge if
@@ -71,41 +76,47 @@ def random_weighted_geometric_graph(n, radius, dim=2, pos=None):
         pu = du['pos']
         for v,dv in nodes:
             pv = dv['pos']
-            d = sum(((a-b)**2 for a,b in zip(pu,pv)))
+            d = euclidean_distance(pu, pv)
             if d <= radius**2:
                 G.add_edge(u,v, weight=d)
     return G
 
-def euclidean_distance(p, q, dimension=2):
-    """Euclidean distance of p,q tuples of given dimension"""
-    return sum(((a-b)**2 for a,b in zip(p, q)))
 
-def geometric_spanner_stretch_factor(g, dimension=2):
-    """INPUT: Geometric spanner, OUTPUT: stretch factor"""
+def geometric_graph_stretch_factor(g, dimension=2):
+    """
+    INPUT: Geometric graph
+    OUTPUT: stretch factor (disjoint graph will return INF)
+    """
 
     pos = nx.get_node_attributes(g, 'pos')
-    dists = nx.floyd_warshall(g)
+    dists = nx.floyd_warshall(g) # get minimum path between all vertices
 
-    print(dists)
+    # print(dists)
 
     max_stretch_factor = 0
 
     # print(dists[0][9])
     # print(euclidean_distance(pos[0], pos[9]))
-    nodes = g.number_of_nodes()
-    for i in range(nodes):
-        for j in range(nodes):
-            if(i == j):
-                continue
 
-            stretch_factor = dists[i][j] / euclidean_distance(pos[i],
-                                                              pos[j],
-                                                              dimension)
+    num_nodes = g.number_of_nodes()
 
+    # get stretch factor between all points
+    # and find max stretch factor
+    for i in range(num_nodes-1):
+        for j in range(i+1, num_nodes):
+            stretch_factor = dists[i][j] / euclidean_distance(pos[i], pos[j])
+
+            # find maximum stretch factor
             if(stretch_factor > max_stretch_factor):
                 max_stretch_factor = stretch_factor
+
     return max_stretch_factor
 
-G = random_weighted_geometric_graph(10, 10)
-print(geometric_spanner_stretch_factor(G))
+def matching(c1, c2):
+    if(c1.number_of_nodes == 0 or c2.number_of_nodes == 0):
+        return nx.Graph()
+
+g = random_weighted_geometric_graph(100, 0.2)
+print(geometric_graph_stretch_factor(G))
+
 # print(euclidean_distance([0,-1], [0,1]))
