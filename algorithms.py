@@ -157,7 +157,9 @@ def deg3_plane_spanner(U, L):
     graph = nx.Graph()
     hull = U[1:] + list(reversed(L[:-1]))
 
-    graph.add_nodes_from(hull)
+    # graph.add_nodes_from(hull)
+    for i in range(len(hull)):
+        graph.add_node(i, pos=hull[i])
 
     dpair = diameter(U, L)
     dpair_ind = []
@@ -260,9 +262,11 @@ for i in range(len(hull)-1):
         c1.append(p)
 
 
-# G = random_weighted_geometric_graph(100, 0.2)
+G = random_weighted_geometric_graph(100, 0.2)
 
-# G = deg3_plane_spanner(U,L)
+g = deg3_plane_spanner(U,L)
+pos = nx.get_node_attributes(g, 'pos')
+print(pos)
 
 # square
 # G = nx.Graph()
