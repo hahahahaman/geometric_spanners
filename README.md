@@ -4,7 +4,8 @@
 1. Implement an algorithm that determines the stretch factor of any
 given geometric graph.
 
-2. Implement the algorithm that constructs the spanner mentioned above.
+2. Implement the algorithm that constructs the spanner mentioned
+   above. plot the graph to see if it works
 
 3. Run experiments on point sets in convex position to determine the
 stretch factor ratio of the spanner mentioned above.
@@ -36,12 +37,22 @@ t-spanner: a graph such that for any two points, p,q, |pq|_G <= t *
 
 stretch factor: the minimum value of t for a t-spanner of the graph
 
-plane spanner: spanner whose edges do not cross
+plane spanner: spanner whose edges do not cross when drawn on a plane
 
 convex position: a set of points is in convex position if all the
 points are on the convex hull formed from the points
 
 chain: a path, sequence of consecutive points connected by edges
+
+diametrical pair: the largest distance between any pair of points in
+a graph is the diameter. a diametrical pair is any pair with distance
+equal to the diameter
+
+Theorem: given a fixed compact convex shape with k vertices, C, let
+Xn be the random sample of n points chosen uniformly and
+independently from inside C. let Zn denote the number of vertices of
+the convex hull of Xn, then E[Zn] = O(k*logn).
+Reference: Har-Peled, On the Expected Complexity of Random Convex Hulls
 
 ## License
 
