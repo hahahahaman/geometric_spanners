@@ -10,11 +10,15 @@ given geometric graph.
 3. Run experiments on point sets in convex position to determine the
 stretch factor ratio of the spanner mentioned above.
 
+Keep track of the graphs.
+
 4. Analyze the results of the experiments and make observations about
 the pairs of points that attain the stretch factor.
 
 5. Use the observations from 4. to improve the upper and lower bounds on
 the stretch factor.
+
+For LOWER BOUND try a big point set?
 
 6. Use the knowledge obtained to design new algorithms for constructing
 plane spanners for points that are not in convex position. 
@@ -48,10 +52,10 @@ diametrical pair: the largest distance between any pair of points in
 a graph is the diameter. a diametrical pair is any pair with distance
 equal to the diameter
 
-Theorem: given a fixed compact convex shape with k vertices, C, let
-Xn be the random sample of n points chosen uniformly and
+Theorem: Let C be a fixed compact convex shape with k vertices in the
+plane, let Xn be the random sample of n points chosen uniformly and
 independently from inside C. let Zn denote the number of vertices of
-the convex hull of Xn, then E[Zn] = O(k*logn).
+the convex hull of Xn, then E[Zn] = O(k*logn). 
 Reference: Har-Peled, On the Expected Complexity of Random Convex Hulls
 
 ## License
