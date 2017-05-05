@@ -10,7 +10,7 @@ n = 100
 def random_points(n):
     pnts = []
     for i in range(n):
-        pnts += [(random.random(),random.random())]
+        pnts.append((random.random(),random.random()))
     return pnts
 
 # points = np.random.rand(n, 2) # 30 random points in 2D, chosen inside a square
@@ -72,7 +72,6 @@ dpair = diameter(U,L)
 # L+=U[1:]
 
 hull = U[1:] + list(reversed(L[:-1]))
-
 
 dpair_indices = []
 for i in range(len(hull)):
