@@ -5,7 +5,7 @@ import math,random
 
 random.seed()
 
-n = 10
+n = 100
 
 def random_points(n):
     pnts = []
@@ -71,10 +71,34 @@ dpair = diameter(U,L)
 # L.pop()
 # L+=U[1:]
 
-print(points)
-print()
-print(U)
+hull = U[1:] + list(reversed(L[:-1]))
 
+
+dpair_indices = []
+for i in range(len(hull)):
+    if(hull[i] == dpair[0] or hull[i] == dpair[1]):
+        dpair_indices += [i]
+
+
+# chains
+c1 = []
+c2 = []
+
+second = False
+for i in range(len(hull)-1):
+    current = (i+dpair_indices[0]+1)%len(hull)
+    p = hull[current]
+
+    if(current == dpair_indices[1]):
+        second = True
+        continue
+
+    if(second == True):
+        c2.append(p)
+    else:
+        c1.append(p)
+
+# Plots
 for p in points:
     plt.plot(p[0], p[1], marker='o', color='b')
 
@@ -82,9 +106,18 @@ def plot_edges(s, color='k', linestyle='-'):
     for i in range(len(s)-1):
         plt.plot([s[i][0], s[i+1][0]], [s[i][1], s[i+1][1]], color=color, linestyle=linestyle)
 
-plot_edges(U, color='g')
-plot_edges(U[1:], color='k', linestyle='--')
-plot_edges(L, color='m')
+# experiments plotting edges of convex hull
+# plot_edges(U, color='g')
+# plot_edges(U[1:], color='k', linestyle='--')
+# plot_edges(L, color='m')
+# plot_edges(L[:-1],color='k',linestyle='--')
 plot_edges(dpair, color='r', linestyle=':')
+
+# hull
+# plot_edges(hull)
+
+#chains
+plot_edges(c1, color='b')
+plot_edges(c2, color='r')
 
 plt.show()
