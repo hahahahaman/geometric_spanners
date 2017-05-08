@@ -100,7 +100,7 @@ def geometric_graph_stretch_factor(g, dimension=2):
     # get minimum path between all vertices
     # dijkstra for all vertices is O(|V||E|log|V|)
     # floyd-warshall is O(|V|^3)
-    if(num_edges < (num_nodes ** 2)/ math.log2(num_nodes)):
+    if(num_edges < (num_nodes ** 2)/math.log2(num_nodes)):
         print("dijkstra")
         min_path_lengths = nx.all_pairs_dijkstra_path_length(g)
     else:
@@ -352,7 +352,7 @@ def diameter(U,L):
 
 # G = random_weighted_geometric_graph(100, 0.2)
 
-points = random_convex_points(10)
+points = random_convex_points(1000)
 G = deg3_plane_spanner(points)
 pos = nx.get_node_attributes(G, 'pos')
 print("number of nodes:", G.number_of_nodes())
@@ -399,10 +399,10 @@ plt.figure(figsize=(8,8))
 #                        cmap=plt.cm.Oranges_r)
 
 nx.draw_networkx_edges(G, pos, alpha=0.4)
-nx.draw_networkx_nodes(G, pos, node_size=20)
+# nx.draw_networkx_nodes(G, pos, node_size=20)
 
 # plt.xlim(-0.05, 1.05)
 # plt.ylim(-0.05, 1.05)
-# plt.axis('off')
-# plt.savefig('random_geometric_graph.png')
+plt.axis('off')
+# plt.savefig('deg3-spanner-algo1.png')
 plt.show()

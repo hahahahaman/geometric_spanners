@@ -1,5 +1,9 @@
 # Geometric Spanner Algorithms
 
+## Degree 3 spanner
+
+![1000 vertices](img/deg3-spanner-algo.png) ![another one](img/deg3-spanner-algo1.png)
+
 ## Plan
 1. Implement an algorithm that determines the stretch factor of any
 given geometric graph.
