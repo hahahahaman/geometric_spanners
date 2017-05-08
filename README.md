@@ -48,6 +48,8 @@ points are on the convex hull formed from the points
 
 chain: a path, sequence of consecutive points connected by edges
 
+set E is a matching: no two edges of E are incident on the same vertex
+
 diametrical pair: the largest distance between any pair of points in
 a graph is the diameter. a diametrical pair is any pair with distance
 equal to the diameter
