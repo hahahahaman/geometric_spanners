@@ -1,3 +1,5 @@
 # storage files
 *.data
 *.p
+
+__pycache__
