@@ -1,13 +1,9 @@
 from __future__ import generators
 import networkx as nx
 import matplotlib.pyplot as plt
-import math, random
+import math, pickle, random
 
 random.seed()
-
-# what is a geometric graph?
-# set of points in euclidean space
-# I will use networkx Graph object
 
 def euclidean_distance(p, q):
     """Euclidean distance of p,q tuples"""
@@ -101,10 +97,10 @@ def geometric_graph_stretch_factor(g, dimension=2):
     # dijkstra for all vertices is O(|V||E|log|V|)
     # floyd-warshall is O(|V|^3)
     if(num_edges < (num_nodes ** 2)/math.log2(num_nodes)):
-        print("dijkstra")
+        # print("dijkstra")
         min_path_lengths = nx.all_pairs_dijkstra_path_length(g)
     else:
-        print("floyd-warshall")
+        # print("floyd-warshall")
         min_path_lengths = nx.floyd_warshall(g)
 
     # print(min_path_lengths)
@@ -190,11 +186,12 @@ def matching(c1, c2, dists):
 
     c2x = c2[:indices[1]]
     c2y = c2[indices[1]+1:]
-    # print(c1x)
-    # print(c1y)
-    # print(c2x)
-    # print(c2y)
+    # print("c1x:", c1x)
+    # print("c1y:", c1y)
+    # print("c2x:", c2x)
+    # print("c2y:", c2y)
     return [closest] + matching(c1x, c2y, dists) + matching(c1y, c2x, dists)
+    # return [closest] + matching(c1x, c2x, dists) + matching(c1y, c2y, dists)
 
 '''
 def diametrical_pair_indices(s):
@@ -323,41 +320,27 @@ def diameter(U,L):
                      for p,q in rotatingCalipers(U,L)])
     return pair
 
-
-# hull = U[1:] + list(reversed(L[:-1]))
-# dpair = diameter(U, L)
-# dpair_ind = []
-# for i in range(len(hull)):
-#     if(hull[i] == dpair[0] or hull[i] == dpair[1]):
-#         dpair_ind += [i]
-
-# # chains
-# c1 = []
-# c2 = []
-
-# second = False
-# for i in range(len(hull)-1):
-#     current = (i+dpair_ind[0]+1)%len(hull)
-#     p = hull[current]
-
-#     if(current == dpair_ind[1]):
-#         second = True
-#         continue
-
-#     if(second == True):
-#         c2.append(p)
-#     else:
-#         c1.append(p)
-
-
+# plt.figure(figsize=(8,8))
 # G = random_weighted_geometric_graph(100, 0.2)
 
-points = random_convex_points(1000)
-G = deg3_plane_spanner(points)
-pos = nx.get_node_attributes(G, 'pos')
-print("number of nodes:", G.number_of_nodes())
-print(geometric_graph_stretch_factor(G))
+graphs = []
+
+n = 100
+for i in range(n):
+    print(i+1, "/", n)
+    points = random_convex_points(i+10)
+    G = deg3_plane_spanner(points)
+    G.graph['stretch_factor'] = geometric_graph_stretch_factor(G)
+    # pos = nx.get_node_attributes(G, 'pos')
+    # print("number of nodes:", G.number_of_nodes())
+    # print(G.graph['stretch_factor'])
+    graphs.append(G)
+
 # print(pos)
+
+filename = 'graphs3.data'
+with open(filename, "wb") as f:
+    pickle.dump(graphs, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 # square
 # G = nx.Graph()
@@ -390,7 +373,6 @@ print(geometric_graph_stretch_factor(G))
 # #color by path length from node near center
 # p=nx.single_source_shortest_path_length(G,ncenter)
 
-plt.figure(figsize=(8,8))
 # nx.draw_networkx_edges(G,pos,nodelist=[ncenter], alpha=0.4)
 # nx.draw_networkx_nodes(G,pos,
 #                        nodelist=p.keys(),
@@ -398,11 +380,11 @@ plt.figure(figsize=(8,8))
 #                        node_color=list(p.values()),
 #                        cmap=plt.cm.Oranges_r)
 
-nx.draw_networkx_edges(G, pos, alpha=0.4)
-# nx.draw_networkx_nodes(G, pos, node_size=20)
+# nx.draw_networkx_edges(G, pos, alpha=0.4)
+# nx.draw_networkx_nodes(G, pos, node_size=20, node_color=[0.5,0.5,0.7])
 
 # plt.xlim(-0.05, 1.05)
 # plt.ylim(-0.05, 1.05)
-plt.axis('off')
+# plt.axis('off')
 # plt.savefig('deg3-spanner-algo1.png')
-plt.show()
+# plt.show()

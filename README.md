@@ -4,6 +4,18 @@
 
 ![1000 vertices](img/deg3-spanner-algo.png) ![another one](img/deg3-spanner-algo1.png)
 
+## Open Problems
+
+What is the minimum t such that there is a t-spanner for any set of
+points?
+
+The plane 1.88-spanner paper has a PlaneSpanner algorithm for points
+in convex position, can the algorithm be extended to general point
+positions?
+
+Is there an algorithm that makes plane spanners of maximum degree 3
+for points in general position? what would its bounds be?
+
 ## Plan
 1. Implement an algorithm that determines the stretch factor of any
 given geometric graph.
