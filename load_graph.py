@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import math, pickle, random
 
-filename = 'graphs2.data'
+filename = 'graphs3.data'
 graphs = []
 with open(filename, "rb") as f:
     graphs = pickle.load(f)

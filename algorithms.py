@@ -1,6 +1,5 @@
 from __future__ import generators
 import networkx as nx
-import matplotlib.pyplot as plt
 import math, pickle, random
 
 random.seed()
@@ -322,25 +321,6 @@ def diameter(U,L):
 
 # plt.figure(figsize=(8,8))
 # G = random_weighted_geometric_graph(100, 0.2)
-
-graphs = []
-
-n = 100
-for i in range(n):
-    print(i+1, "/", n)
-    points = random_convex_points(i+10)
-    G = deg3_plane_spanner(points)
-    G.graph['stretch_factor'] = geometric_graph_stretch_factor(G)
-    # pos = nx.get_node_attributes(G, 'pos')
-    # print("number of nodes:", G.number_of_nodes())
-    # print(G.graph['stretch_factor'])
-    graphs.append(G)
-
-# print(pos)
-
-filename = 'graphs3.data'
-with open(filename, "wb") as f:
-    pickle.dump(graphs, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 # square
 # G = nx.Graph()
