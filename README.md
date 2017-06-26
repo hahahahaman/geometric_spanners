@@ -2,7 +2,40 @@
 
 ## Degree 3 spanner
 
-![1000 vertices](img/deg3-spanner-algo.png) ![another one](img/deg3-spanner-algo1.png)
+![1000 vertices](img/deg3-spanner-algo.png)
+
+## How to use:
+
+The way I use this is with Python3, Pip3, networkx and matplotlib.
+
+```
+pip3 install networkx matplotlib
+
+python3 test_deg3_spanner.py
+```
+
+The degree 3 spanner algorithm from [here](papers/Deg-3-Spanner.pdf),
+is implemented in algorithms.py, the function is called
+deg3_plane_spanner.
+
+### Additional Info
+
+Inside the folder testing/ are python3 scripts which served as
+stepping stones for the implementation.
+
+convex_hull_example.py draws the upper and lower chains of a convex
+hull around a set of random points. It also obtains diametrical
+points on the convex hull and draws a line between them.
+
+networkx_example.py is the provided example of NetworkX library for
+random geometric graphs.
+([link](https://networkx.github.io/documentation/networkx-1.9/examples/drawing/random_geometric_graph.html))
+
+randcon.py is an implementation of Valtr's algorithm for random
+convex polygons. ([link](https://github.com/patmorin/randcon))
+
+scipy_example.py uses the convex hull algorithm that comes with the
+scipy library.
 
 ## Open Problems
 

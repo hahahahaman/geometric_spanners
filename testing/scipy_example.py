@@ -8,8 +8,7 @@ points = np.random.rand(n, 2) # 30 random points in 2D, chosen inside a square
 hull = ConvexHull(points)
 
 # print(2 * math.log(n, 2)) # approximately 2*logn vertices are part of the hull
-# print([points[v][0] for v in hull.vertices]) 
-
+# print([points[v][0] for v in hull.vertices])
 
 print(hull.simplices)
 

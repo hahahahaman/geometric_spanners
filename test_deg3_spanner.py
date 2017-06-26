@@ -2,7 +2,7 @@ import networkx as nx
 import algorithms
 import matplotlib.pyplot as plt
 
-n = 100
+n = 10
 
 points = algorithms.random_convex_points(n)
 G = algorithms.deg3_plane_spanner(points)
@@ -10,7 +10,7 @@ G.graph['stretch_factor'] = algorithms.geometric_graph_stretch_factor(G)
 pos = nx.get_node_attributes(G, 'pos')
 
 print("number of nodes:", G.number_of_nodes())
-print(G.graph['stretch_factor'])
+print("stretch factor", G.graph['stretch_factor'])
 
 plt.figure(figsize=(8,8))
 
