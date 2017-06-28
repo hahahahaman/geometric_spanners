@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import math, pickle, random
 
-filename = 'graphs3.data'
+filename = 'graphs.data'
 graphs = []
 with open(filename, "rb") as f:
     graphs = pickle.load(f)
@@ -27,7 +27,7 @@ pos = nx.get_node_attributes(Gmax, 'pos')
 
 plt.figure(figsize=(8,8))
 nx.draw_networkx_edges(Gmax, pos, alpha=0.4)
-nx.draw_networkx_nodes(Gmax, pos, node_size=20, node_color=[0.5,0.5,0.7])
+nx.draw_networkx_nodes(Gmax, pos, node_size=10, node_color=[0.5,0.5,0.7])
 
 plt.axis('off')
 # plt.savefig('deg3-spanner-algo1.png')
@@ -39,7 +39,7 @@ pos = nx.get_node_attributes(Gmin, 'pos')
 
 plt.figure(figsize=(8,8))
 nx.draw_networkx_edges(Gmin, pos, alpha=0.4)
-nx.draw_networkx_nodes(Gmin, pos, node_size=20, node_color=[0.5,0.5,0.7])
+nx.draw_networkx_nodes(Gmin, pos, node_size=10, node_color=[0.5,0.5,0.7])
 
 plt.axis('off')
 # plt.savefig('deg3-spanner-algo1.png')

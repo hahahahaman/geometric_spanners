@@ -18,6 +18,16 @@ The degree 3 spanner algorithm from [here](papers/Deg-3-Spanner.pdf),
 is implemented in algorithms.py, the function is called
 deg3_plane_spanner.
 
+#### Generating Lots of Graphs
+
+```
+python3 generate_graphs.py
+python3 load_graph.py
+```
+
+Currently load_graph.py will plot the graph with the highest and
+lowest stretch factors.
+
 ### Additional Info
 
 Inside the folder testing/ are python3 scripts which served as

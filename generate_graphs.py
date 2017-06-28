@@ -16,6 +16,6 @@ for i in range(n):
 
 # print(pos)
 
-filename = 'graphs3.data'
+filename = 'graphs.data'
 with open(filename, "wb") as f:
     pickle.dump(graphs, f, protocol=pickle.HIGHEST_PROTOCOL)
